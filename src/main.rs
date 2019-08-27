@@ -1,6 +1,6 @@
 use colored::*;
 use rand::random;
-// use std::io;
+use std::io;
 // use serde_json::{Result, Value};
 // use wasm_bindgen::prelude::*;
 
@@ -31,8 +31,27 @@ use rand::random;
 //   );
 // }
 
-fn input_guess() {
-    println!("{}\n", "Make a guess:".bold().blue());
+fn get_user_guess() -> u8 {
+    loop {
+        println!("{}\n", "Make a guess:".bold().blue());
+        let mut user_guess = String::new();
+        io::stdin()
+            .read_line(&mut user_guess)
+            .expect("Could not read input");
+        user_guess
+            .trim()
+            .parse::<u8>()
+            .expect("Did you enter a number?");
+    }
+
+    // let mut guess_display = String::new();
+    // if user_guess_as_number == correct_answer {
+    //     guess_display = user_guess.green().to_string();
+    // } else {
+    //     guess_display = user_guess.red().to_string();
+    // }
+
+    // println!("{} {}", "You guessed:", guess_display)
 }
 
 fn main() {
@@ -40,8 +59,8 @@ fn main() {
     let correct_answer = random::<u8>();
     println!(
         "\n\n{} {}",
-        "The correct answer is: ".bold(),
+        "The correct answer is:".bold(),
         correct_answer.to_string().green().bold()
     );
-    input_guess();
+    let a = get_user_guess();
 }
