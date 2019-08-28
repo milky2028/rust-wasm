@@ -31,7 +31,7 @@ use std::io;
 //   );
 // }
 
-fn get_user_guess() -> u8 {
+fn user_guess() -> u8 {
     loop {
         println!("{}\n", "Make a guess:".bold().blue());
         let mut user_guess = String::new();
@@ -62,5 +62,5 @@ fn main() {
         "The correct answer is:".bold(),
         correct_answer.to_string().green().bold()
     );
-    let a = get_user_guess();
+    let a = user_guess();
 }
