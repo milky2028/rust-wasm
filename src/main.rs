@@ -73,7 +73,7 @@ fn main() {
     let mut input = String::new();
     stdin()
         .read_line(&mut input)
-        .expect("Somehow, there wasn't anything entered");
+        .expect("Somehow, stdin doesn't work. Are you even on a computer? Is this function being called in the ethereal everywhere?");
     let mut state = State::Normal;
     let mut output = String::new();
     for character in input.chars() {
