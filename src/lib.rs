@@ -8,8 +8,13 @@ struct Payload {
   metrics: Vec<f64>,
 }
 
+fn init_panic_hook() {
+  console_error_panic_hook::set_once();
+}
+
 #[wasm_bindgen]
 pub fn weighted_average(json: &str) -> f64 {
+  init_panic_hook();
   let parsed: Result<Payload> = serde_json::from_str(json);
   match parsed {
     Ok(v) => {
